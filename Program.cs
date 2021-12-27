@@ -27,6 +27,26 @@ int[] Dev1(int[] ArrayA)
     return (ArrayB); 
 }
 
+int[] Dev1_1(int[] ArrayA)
+{
+    int lenB = 0;
+    for (int i = 0; i < ArrayA.Length; i++)
+    {
+        if (ArrayA[i] %2 == 0) lenB++; 
+    }
+    int[] ArrayB = new int[lenB];
+    int j = 0;
+    for (int i = 0; i < ArrayA.Length; i++)
+    {
+        if (ArrayA[i] %2==0)
+        {
+            ArrayB[j] = ArrayA[i];
+            j++;
+        }
+    }
+    return (ArrayB); 
+}
+
 int[] Dev2(int[] ArrayA)
 {
     int[] ArrayB = new int[0];
@@ -73,8 +93,8 @@ void WriteArray(int[] ArrayA, int[] ArrayB)
 void Task()
 {
     int[] ArrayA = FillArray();
-    WriteArray(ArrayA, Dev1(ArrayA));
     WriteArray(ArrayA, Dev2(ArrayA));
+    WriteArray(ArrayA, Dev1_1(ArrayA));
 }
 
 Task();
