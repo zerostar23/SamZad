@@ -1,18 +1,17 @@
 ﻿// Задача: Написать программу, которая из имеющегося массива целых чисел формирует массив из четных чисел. Первоначальный массив можно ввести с клавиатуры, либо сгенерировать случайным образом. При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
+
 int[] FillArray()
 {
-    int[] array = new int[10];
-    for (int i = 0; i < array.Length; i++)
+    int[] ArrayA = new int[10];
+    for (int i = 0; i < ArrayA.Length; i++)
     {
-        array[i] = new Random().Next(-10, 20);
+        ArrayA[i] = new Random().Next(-10, 20);
     }
-   
-    return array;
+    return ArrayA;
 }
 
-(int[], int[]) Dev1()
+int[] Dev1(int[] ArrayA)
 {
-    int[] ArrayA = FillArray();
     int[] ArrayB = new int[0];
     int j = 0;
     for (int i = 0; i < ArrayA.Length; i++)
@@ -25,30 +24,30 @@ int[] FillArray()
             j++;
         }
     }
-    return (ArrayA, ArrayB); 
+    return (ArrayB); 
 }
 
-(int[], int[]) Dev2()
+int[] Dev2(int[] ArrayA)
 {
-    int[] ArrayA = FillArray();
-
     int[] ArrayB = new int[0];
     int j = 0;
-    for (int i = 0; i < ArrayA1.Length; i++)
+    for (int i = 0; i < ArrayA.Length; i++)
     {
-        if (ArrayA1[i] > 8)
+        if (ArrayA[i] > 8)
         {
             int lenght = ArrayB.Length;
             Array.Resize(ref ArrayB, lenght + 1);
-            ArrayB[j] = ArrayA1[i];
+            ArrayB[j] = ArrayA[i];
             j++;
         }
     }
-    return (ArrayA1, ArrayB); 
+    return (ArrayB); 
 }
-void WriteArray(int[] ArrayA, int[] ArrayB)
 
+void WriteArray(int[] ArrayA, int[] ArrayB)
 {
+    DateTime saveTime;
+    saveTime = DateTime.Now;
     Console.Write("[");
     for (int i = 0; i < ArrayA.Length; i++)
     {
@@ -67,9 +66,15 @@ void WriteArray(int[] ArrayA, int[] ArrayB)
             Console.Write(", ");
         }
     }
-    Console.WriteLine("]\n");
+    Console.WriteLine("]");
+    Console.WriteLine($"Прошло: {DateTime.Now - saveTime} \n");
 }
 
-//WriteArray(Dev1().Item1, Dev1().Item2);
+void Task()
+{
+    int[] ArrayA = FillArray();
+    WriteArray(ArrayA, Dev1(ArrayA));
+    WriteArray(ArrayA, Dev2(ArrayA));
+}
 
-WriteArray(Dev2().Item1, Dev2().Item2);
+Task();
