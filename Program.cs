@@ -1,5 +1,4 @@
-﻿// Задача: Написать программу, которая из имеющегося массива целых чисел формирует массив из четных чисел. Первоначальный массив можно ввести с клавиатуры, либо сгенерировать случайным образом. При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
-
+﻿
 int[] FillArray()
 {
     int[] ArrayA = new int[10];
@@ -11,23 +10,6 @@ int[] FillArray()
 }
 
 int[] Dev1(int[] ArrayA)
-{
-    int[] ArrayB = new int[0];
-    int j = 0;
-    for (int i = 0; i < ArrayA.Length; i++)
-    {
-        if (ArrayA[i] %2==0)
-        {
-            int lenght = ArrayB.Length;
-            Array.Resize(ref ArrayB, lenght + 1);
-            ArrayB[j] = ArrayA[i];
-            j++;
-        }
-    }
-    return (ArrayB); 
-}
-
-int[] Dev1_1(int[] ArrayA)
 {
     int lenB = 0;
     for (int i = 0; i < ArrayA.Length; i++)
@@ -49,14 +31,17 @@ int[] Dev1_1(int[] ArrayA)
 
 int[] Dev2(int[] ArrayA)
 {
-    int[] ArrayB = new int[0];
+    int lenB = 0;
+    for (int i = 0; i < ArrayA.Length; i++)
+    {
+        if (ArrayA[i] > 8) lenB++; 
+    }
+    int[] ArrayB = new int[lenB];
     int j = 0;
     for (int i = 0; i < ArrayA.Length; i++)
     {
         if (ArrayA[i] > 8)
         {
-            int lenght = ArrayB.Length;
-            Array.Resize(ref ArrayB, lenght + 1);
             ArrayB[j] = ArrayA[i];
             j++;
         }
@@ -66,8 +51,6 @@ int[] Dev2(int[] ArrayA)
 
 void WriteArray(int[] ArrayA, int[] ArrayB)
 {
-    DateTime saveTime;
-    saveTime = DateTime.Now;
     Console.Write("[");
     for (int i = 0; i < ArrayA.Length; i++)
     {
@@ -86,15 +69,14 @@ void WriteArray(int[] ArrayA, int[] ArrayB)
             Console.Write(", ");
         }
     }
-    Console.WriteLine("]");
-    Console.WriteLine($"Прошло: {DateTime.Now - saveTime} \n");
+    Console.WriteLine("]\n");
 }
 
 void Task()
 {
     int[] ArrayA = FillArray();
+    WriteArray(ArrayA, Dev1(ArrayA));
     WriteArray(ArrayA, Dev2(ArrayA));
-    WriteArray(ArrayA, Dev1_1(ArrayA));
 }
 
 Task();
