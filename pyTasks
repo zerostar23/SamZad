@@ -9,3 +9,10 @@ for i in range(1,len(listNums)):
     
 print (f'{listNums}, {max}')
 
+3. n = int(input('Введите N '))
+
+for i in range(-n, n+1):
+    print(f'{i} ')
+    
+
+
