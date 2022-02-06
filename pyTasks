@@ -1,0 +1,11 @@
+2. listNums = [5,2,32,56,3]
+max = listNums[0]
+
+
+for i in range(1,len(listNums)):
+
+    if listNums[i] > max:
+        max = listNums[i]
+    
+print (f'{listNums}, {max}')
+
